@@ -2,7 +2,26 @@ import { firebase_auth } from "../../blueprint/src/app/firebaseconf";
 import { createUserWithEmailAndPassword, GoogleAuthProvider, sendEmailVerification, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, updatePassword } from "@firebase/auth";
 
 export const doCreateUserWithEmailAndPassword = async(email,password) => {
-    return createUserWithEmailAndPassword(firebase_auth, email, password)
+    return createUserWithEmailAndPassword(firebase_auth, email, password).then(
+        (user) => {
+            firebase_auth.auth().currentUser
+            if(user){
+                user.updateProfile({
+                    firstName,
+                    lastName ,
+                    address  ,
+                    city,
+                    state,
+                    postalcode,
+                    dateOfBirth,
+                }).catch(function(error){
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+                }
+            )
+            }
+        }
+    )
 };
 
 export const doSignInWithEmailAndPassword = (email,password) => {

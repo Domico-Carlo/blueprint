@@ -13,7 +13,7 @@ const Register = () => {
     const [errorMessage, setErrorMessage] = useState('')
 
     const { userLoggedIn } = useAuth()
-
+    
     const onSubmit = async (e) => {
         e.preventDefault()
         if(!isRegistering){
@@ -25,7 +25,11 @@ const Register = () => {
         <>
         {userLoggedIn && (<Navigate to={'/home'} replace={true}/>)}
         <main className='The-Rest-Plaza'>
-            
+            <div className='HorrorReg'>
+                <h2 className='RegText'>Sign Up</h2>
+                <h2 className='EnterYourDetails'>Please enter your detials</h2>
+
+            </div>
         </main>
         </>
     )
