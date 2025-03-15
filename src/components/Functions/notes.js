@@ -1,8 +1,8 @@
-// src/components/Notes.js
 import React, { useState, useEffect } from "react";
 import { firebase_db } from "../../firebase/FirebaseConfig"; // Adjust the import path as needed
 import { collection, addDoc, onSnapshot, query, orderBy } from "firebase/firestore";
 import { EditorRoot, EditorContent, useEditor } from "novel";
+import { StarterKit } from "@tiptap/starter-kit"; // Import the default schema
 
 const Notes = () => {
   const [notes, setNotes] = useState([]);
@@ -32,9 +32,10 @@ const Notes = () => {
     setEditorContent("");
   };
 
-  // Initialize the Novel editor
+  // Initialize the Novel editor with a valid schema
   const editor = useEditor({
-    content: editorContent,
+    extensions: [StarterKit], // Add the default schema
+    content: editorContent, // Set initial content
     onUpdate: ({ editor }) => {
       setEditorContent(editor.getHTML());
     },
