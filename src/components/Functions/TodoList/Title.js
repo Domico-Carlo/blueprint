@@ -10,12 +10,12 @@ import { firebase_auth, firebase_db, logout } from "../firebase";
 function Title() {
   const [openAddModal, setOpenAddModal] = useState(false);
   const [tasks,setTasks] = useState([])
-  const [user, loading, error] = useAuthState(auth);
+  const [user, loading, error] = useAuthState(firebase_auth);
   const [name, setName] = useState("");
   const navigate = useNavigate();
   const fetchUserName = async () => {
      try {
-      const q = query(collection(db, "users"), where("uid", "==", user?.uid));
+      const q = query(collection(firebase_db, "users"), where("uid", "==", user?.uid));
       const doc = await getDocs(q);
       const data = doc.docs[0].data();
       setName(data.name);
@@ -31,7 +31,7 @@ function Title() {
   }, [user, loading]);
   /* function to get all tasks from firestore in realtime */
   useEffect(()=>{
-    const q = query(collection(db,'tasks'),orderBy('created','desc'));
+    const q = query(collection(firebase_db,'tasks'),orderBy('created','desc'));
     onSnapshot(q,(querySnapshot)=>{
       setTasks(querySnapshot.docs.map(doc=>({
         id:doc.id,
