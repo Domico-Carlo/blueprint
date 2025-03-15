@@ -3,7 +3,7 @@ import { useState } from "react";
 import Todo from "./Todo";
 import EditTodo from "./EditTodo";
 
-function TodoList({ id, title, description, completed }) {
+function TodoList({ id, title, description, location, datetime, completed }) {
   const [checked, setChecked] = useState(completed);
   const [open, setOpen] = useState({ edit: false, view: false });
 
@@ -35,6 +35,8 @@ function TodoList({ id, title, description, completed }) {
       <div className="todoList__body">
         <h2>{title}</h2>
         <p>{description}</p>
+        <p>{location}</p>
+        <p>{datetime}</p>
         <div className="todoList__buttons">
           <div className="todoList__deleteNedit">
             <button
@@ -54,6 +56,8 @@ function TodoList({ id, title, description, completed }) {
           onClose={handleClose}
           title={title}
           description={description}
+          location={location}
+          datetime={datetime}
           open={open.view}
         />
       )}
@@ -63,6 +67,8 @@ function TodoList({ id, title, description, completed }) {
           onClose={handleClose}
           toEditTitle={title}
           toEditDescription={description}
+          location={location}
+          datetime={datetime}
           open={open.edit}
           id={id}
         />

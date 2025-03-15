@@ -57,6 +57,8 @@ function Title() {
               key={todo.id}
               completed={todo.data.completed}
               title={todo.data.title}
+              location={todo.data.location}
+              datetime={todo.data.datetime}
               description={todo.data.description}
               />
           ))}

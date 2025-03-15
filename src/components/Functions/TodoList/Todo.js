@@ -7,6 +7,8 @@ function Todo({ onClose, open, title, description }) {
       <div className="todo">
         <h2>{title}</h2>
         <p>{description}</p>
+        <p>{location}</p>
+        <p>{datetime}</p>
       </div>
     </Modal>
   );

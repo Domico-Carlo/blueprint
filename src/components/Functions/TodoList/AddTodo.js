@@ -8,7 +8,9 @@ function AddTodo({onClose, open}) {
 
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
-
+  const [location, setLocation] = useState('')
+  const [datetime, setDatetime] = useState('')
+  
   /* function to add new task to firestore */
   const handleSubmit = async (e) => { 
     e.preventDefault()
@@ -16,6 +18,8 @@ function AddTodo({onClose, open}) {
       await addDoc(collection(firebase_db,'tasks'),{
         title:title,
         description:description,
+        location:location,
+        datetime:datetime,
         completed:false,
         created: Timestamp.now()
       })
@@ -37,6 +41,18 @@ function AddTodo({onClose, open}) {
           onChange={(e) => setDescription(e.target.value)}
           placeholder='Enter task decription'
           value={description}></textarea>
+        <input
+          type='text'
+          name='location'
+          onChange={(e) => setLocation(e.target.value)}
+          value={location}
+          placeholder='Enter location'/>
+        <input
+          type='datetime-local'
+          name='date'
+          onChange={(e) => setDatetime(e.target.value)}
+          value={datetime}
+          placeholder='Enter date'/>
         <button type='submit'>Done</button>
       </form> 
     </Modal>
