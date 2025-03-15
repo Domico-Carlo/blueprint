@@ -2,7 +2,7 @@ import Modal from "./Modal"
 import {useState} from 'react'
 import '../styles/addTodo.css'
 import { addDoc, collection, Timestamp } from "firebase/firestore"
-import { db } from "../firebase"
+import { firebase_db } from "../firebase"
 
 function AddTodo({onClose, open}) {
 

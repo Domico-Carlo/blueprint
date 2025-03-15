@@ -5,7 +5,7 @@ import React,{ useState, useEffect } from "react";
 import { collection,query,orderBy,onSnapshot,getDocs, where } from "firebase/firestore";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
-import { auth, db, logout } from "../firebase";
+import { firebase_auth, firebase_db, logout } from "../firebase";
 
 function Title() {
   const [openAddModal, setOpenAddModal] = useState(false);
