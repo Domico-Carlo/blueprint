@@ -2,7 +2,7 @@ import Login from "./components/auth/login/login";
 import Register from "./components/auth/register/regist";
 import { AuthProvider } from "./contexts/authContext/AuthProvider";
 import { BrowserRouter, useRoutes } from "react-router-dom";
-
+import Notes from "./components/Functions/notes";
 function AppRoutes() {
   const routesArray = [
     {
@@ -16,6 +16,10 @@ function AppRoutes() {
     {
       path: "/register",
       element: <Register />,
+    },
+    {
+      path: "/notes",
+      element: <Notes/>
     }
   ];
   
