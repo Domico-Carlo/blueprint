@@ -1,6 +1,8 @@
+import React, { useContext, useState, useEffect } from "react";
 import { onAuthStateChanged } from "@firebase/auth";
-import { firebase_auth } from "../../../blueprint/src/app/firebaseconf";
-import { onAuthStateChanged } from "@firebase/auth";
+import { firebase_auth } from "../../firebase/FirebaseConfig";
+
+
 const AuthContext = React.createContext();
 
 export function useAuth(){
@@ -12,7 +14,7 @@ export function AuthProvider({children}){
     const [loading, setLoading] = useState(true);
 
     useEffect (() => {
-        const unsubscribe = onAuthStateChanged(auth, initializeUser);
+        const unsubscribe = onAuthStateChanged(firebase_auth, initializeUser);
         return unsubscribe;
     },[])
     

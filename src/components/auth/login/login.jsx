@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Navigate, Link } from 'react-router-dom'
-import { doSignInWithEmailAndPassword } from '../../../firebase/auth'
-import { useAuth } from '../../contexts/authContext'
+import { doSignInWithEmailAndPassword,doSignWithGoogle } from '../../../firebase/auth'
+import { useAuth } from '../../../contexts/authContext/AuthProvider'
 
 const Login = () => {
     const { userLoggedIn } = useAuth()
@@ -23,7 +23,7 @@ const Login = () => {
         e.preventDefault()
         if(!isSigningIn) {
             setIsSigningIn(true)
-            dosigninWithGoogle().catch(err => {
+            doSignWithGoogle().catch(err => {
                 setIsSigningIn(false)
             })
         }
@@ -97,3 +97,5 @@ const Login = () => {
         </div>
     )
 }   
+
+export default Login
