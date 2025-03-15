@@ -1,9 +1,9 @@
 import Login from "./components/auth/login/login";
 import Register from "./components/auth/register/regist";
 import { AuthProvider } from "./contexts/authContext/AuthProvider";
-import { useRoutes } from "react-router-dom";
+import { BrowserRouter, useRoutes } from "react-router-dom";
 
-function App() {
+function AppRoutes() {
   const routesArray = [
     {
       path: "*",
@@ -17,12 +17,19 @@ function App() {
       path: "/register",
       element: <Register />,
     }
-];
-let routesElement = useRoutes(routesArray);
+  ];
+  
+  return useRoutes(routesArray);
+}
+
+function App() {
   return (
-    <AuthProvider>
-    </AuthProvider>
+    <BrowserRouter>
+      <AuthProvider>
+        <AppRoutes />
+      </AuthProvider>
+    </BrowserRouter>
   );
 }
 
-export default App
+export default App;
