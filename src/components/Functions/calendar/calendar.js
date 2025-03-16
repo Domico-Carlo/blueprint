@@ -30,17 +30,18 @@ const Calendar = () => {
                         <div key={`empty-${i}`} style={{ padding: '2px' }}></div>
                     ))}
                     {Array(new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0).getDate()).fill(null).map((_, i) => {
-                        const month_correct = new Date().getDate() === i + 1 && new Date().getMonth() === currentDate.getMonth();
+                        const month_correct = !selectedDate && new Date().getDate() === i + 1 && new Date().getMonth() === currentDate.getMonth();
+
                         return (
                             <div 
                                 key={i + 1} 
                                 style={{ 
                                     textAlign: 'center', 
                                     padding: '2px',
-                                    backgroundColor: bg_cond_1 ? '#e6e6e6' : 'transparent',
+                                    backgroundColor: month_correct || selectedDate === i + 1 ? '#e6e6e6' : 'transparent',
                                     cursor: 'pointer'
                                 }}
-                                onClick={() => console.log(`Selected: ${i + 1}`)}
+                                onClick={() => setSelectedDate(i + 1)}
                             >
                                 {i + 1}
                             </div>
