@@ -9,7 +9,7 @@ function AppRoutes() {
   const routesArray = [
     {
       path: "*",
-      element: <Calendar />,
+      element: <Login />,
     },
     {
       path: "/login",
@@ -19,14 +19,14 @@ function AppRoutes() {
       path: "/register",
       element: <Register />,
     },
-    // {
-    // //   path: "/notes",
-    // //   element: <Notes/>
-    // },
-    // {
-    //   path: "/calendar",
-    //   element: <Calendar />
-    // }
+    {
+      path: "/notes",
+      element: <Notes/>
+    },
+    {
+      path: "/calendar",
+      element: <Calendar />
+    }
   ];
   
   return useRoutes(routesArray);
