@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import LargeCalendar from './LargeCalendar';
+import EventHandler from './EventHandler';
 
 const Calendar = () => {
     const [currentDate, setCurrentDate] = useState(new Date());
@@ -15,12 +16,12 @@ const Calendar = () => {
                 padding: '10px',
             }}>
                 <h1 style={{ textAlign: 'center' }}>Calendar</h1>
-                <div className="calendar-container">
-                    <div className="calendar-header" style={{ display: 'flex', alignItems: 'left' }}>
+                <div className="calendar-container" style={{ marginBottom: '15px' }}>
+                    <div className="calendar-header" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px' }}>
                         <button onClick={() => setCurrentDate(new Date(currentDate.setMonth(currentDate.getMonth() - 1)))}>
                                 &lt;
                         </button>
-                        <div>
+                        <div style={{ textAlign: 'center' }}>
                             {currentDate.toLocaleString('default', { month: 'long' })} {currentDate.getFullYear()}
                         </div>
                         <button onClick={() => setCurrentDate(new Date(currentDate.setMonth(currentDate.getMonth() + 1)))}>
@@ -56,10 +57,10 @@ const Calendar = () => {
                         })}
                     </div>
                 </div>
+                <EventHandler />
             </div>
             <div style={{ marginLeft: '350px', borderLeft: '4px solid #eee', paddingLeft: '20px', minHeight: '100vh' }}>
-                <h1><br></br></h1>
-                <LargeCalendar selectedDate={selectedDate} />
+                <LargeCalendar selectedDate={selectedDate} currentDate={currentDate} />
             </div>
         </div>
     );

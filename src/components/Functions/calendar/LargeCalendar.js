@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 
-const LargeCalendar = ({ selectedDate }) => {
+const LargeCalendar = ({ selectedDate, currentDate, setCurrentDate }) => {
     const [viewMode, setViewMode] = useState('month'); // 'day', 'week', or 'month'
-    const [currentDate, setCurrentDate] = useState(new Date());
 
     const renderDayView = () => {
         const hours = Array.from({ length: 24 }, (_, i) => i);
@@ -100,6 +99,7 @@ const LargeCalendar = ({ selectedDate }) => {
 
     return (
         <div>
+            <h1>{currentDate.toLocaleString('default', { month: 'long' })}</h1>
             <div style={{ marginBottom: '20px', display: 'flex', gap: '10px' }}>
                 <button onClick={() => setViewMode('day')}>Day</button>
                 <button onClick={() => setViewMode('week')}>Week</button>
