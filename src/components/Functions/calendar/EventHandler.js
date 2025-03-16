@@ -6,11 +6,19 @@ Modal.setAppElement('#root');  // or whatever your root element id is
 
 const EventHandler = ({ onEventCreate }) => {
     const [modalIsOpen, setModalIsOpen] = useState(false);
+    const [eventData, setEventData] = useState(new Map([
+        ['name', ''],
+        ['description', ''],
+        ['location', ''],
+        ['date', '']
+    ]));
 
-    return (
-        <div className="event-handler" style={{ alignItems: 'center', justifyContent: 'center', display: 'flex'}}>
-            <button onClick={() => setModalIsOpen(true)} style={{ width: '200px', height: '50px', fontSize: '20px'}}>Create Event</button>
+    const modalSubmit = () => {
+        console.log(eventData);
+    };
 
+    const EventModal = () => {
+        return (
             <Modal
                 isOpen={modalIsOpen}
                 onRequestClose={() => setModalIsOpen(false)}
@@ -53,6 +61,14 @@ const EventHandler = ({ onEventCreate }) => {
                 </form>
                 }
             </Modal>
+        );
+    };
+
+    return (
+        <div className="event-handler" style={{ alignItems: 'center', justifyContent: 'center', display: 'flex'}}>
+            <button onClick={() => setModalIsOpen(true)} style={{ width: '200px', height: '50px', fontSize: '20px'}}>Create Event</button>
+            
+            <EventModal/>
         </div>
     );
 };
